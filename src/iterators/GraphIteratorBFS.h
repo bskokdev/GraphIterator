@@ -6,6 +6,8 @@
 #include "../Graph.h"
 #include "GraphBaseIterator.h"
 
+class Graph;
+
 /**
  * @brief class representing a breadth first search iterator
  */
@@ -15,9 +17,6 @@ private:
     std::set<int> visited;
     std::queue<std::pair<int, std::vector<int>>> queue;
 public:
-    // delete the default constructor
-    GraphIteratorBFS() = delete;
-
     /**
      * @brief constructor
      * @param graph Graph to iterate over
@@ -31,10 +30,34 @@ public:
     void reset() override;
 
     /**
+     * @brief checks if the iterator is at the end
+     * @see GraphBaseIterator::isEnd()
+     */
+    bool isEnd() override;
+
+    /**
      * @brief increments the iterator
+     * @see GraphBaseIterator::next()
+     */
+    GraphBaseIterator& next() override;
+
+    /**
+     * @brief gets the current key of the iterator
+     * @see GraphBaseIterator::currentKey()
+     */
+    int currentKey() override;
+
+    /**
+     * @brief increments the iterator (prefix)
      * @see GraphBaseIterator::operator++()
      */
     GraphIteratorBFS& operator++() override;
+
+    /**
+     * @brief increments the iterator (postfix)
+     * @see GraphBaseIterator::operator++(int)
+     */
+    std::shared_ptr<GraphBaseIterator> operator++(int) override;
 
     /**
      * @brief dereferences the iterator

@@ -1,6 +1,8 @@
 #ifndef GRAPHMASTERY_GRAPHBASEITERATOR_H
 #define GRAPHMASTERY_GRAPHBASEITERATOR_H
 
+#include <memory>
+
 /**
  * @brief class representing a base iterator for a graph
  */
@@ -29,10 +31,16 @@ class GraphBaseIterator {
     virtual int currentKey() = 0;
 
     /**
-     * @brief increments the iterator
+     * @brief increments the iterator (prefix)
      * @return the iterator
      */
     virtual GraphBaseIterator& operator++() = 0;
+
+    /**
+     * @brief increments the iterator (postfix)
+     * @return the iterator
+     */
+    virtual std::shared_ptr<GraphBaseIterator> operator++(int) = 0;
 
     /**
      * @brief dereferences the iterator

@@ -1,4 +1,5 @@
 #include "GraphIteratorBFS.h"
+#include "../Graph.h"
 
 GraphIteratorBFS::GraphIteratorBFS(Graph &graph) : graph(graph) {
     this->queue = std::queue<std::pair<int, std::vector<int>>>();
@@ -16,4 +17,53 @@ void GraphIteratorBFS::reset() {
     std::pair<int, std::vector<int>> lowestValueNode = graph.findLowestValue();
     this->queue.push(lowestValueNode);
     this->visited.insert(lowestValueNode.first);
+}
+
+bool GraphIteratorBFS::isEnd() {
+    return this->queue.empty();
+}
+
+GraphBaseIterator &GraphIteratorBFS::next() {
+    ++(*this);
+    return *this;
+}
+
+int GraphIteratorBFS::currentKey() {
+    return this->queue.front().first;
+}
+
+GraphIteratorBFS &GraphIteratorBFS::operator++() {
+    if (!this->queue.empty()) {
+        std::pair<int, std::vector<int>> currentNode = this->queue.front();
+        this->queue.pop();
+
+        for (int &neighbor : currentNode.second) {
+            if (!this->visited.count(neighbor)) {
+                this->queue.emplace(*this->graph.getAdjacencyList().find(neighbor));
+                this->visited.insert(neighbor);
+            }
+        }
+    }
+    return *this;
+
+}
+
+std::shared_ptr<GraphBaseIterator> GraphIteratorBFS::operator++(int) {
+    // create a copy of the iterator
+    auto tmpIt = std::make_shared<GraphIteratorBFS>(*this);
+    // increment the original iterator
+    ++(*this);
+    // return the copy
+    return tmpIt;
+}
+
+int GraphIteratorBFS::operator*() {
+    return this->queue.front().first;
+}
+
+bool GraphIteratorBFS::operator!=(const GraphBaseIterator &other) {
+    // cast to GraphIteratorBFS
+    auto* other_ptr = dynamic_cast<const GraphIteratorBFS*>(&other);
+    if(other_ptr == nullptr) return true;
+    return this->queue != other_ptr->queue;
 }

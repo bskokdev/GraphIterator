@@ -1,4 +1,5 @@
 #include "Graph.h"
+#include "iterators/GraphIteratorBFS.h"
 
 Graph::Graph() {
     adjacencyList = std::unordered_map<int, std::vector<int>>();
@@ -21,5 +22,20 @@ std::pair<int, std::vector<int>> Graph::findLowestValue() {
 
 const std::unordered_map<int, std::vector<int>> &Graph::getAdjacencyList() const {
     return this->adjacencyList;
+}
+
+GraphIteratorBFS Graph::begin() {
+    GraphIteratorBFS it(*this);
+    it.reset();
+    return it;
+}
+
+GraphIteratorBFS Graph::end() {
+    GraphIteratorBFS it(*this);
+    // move the iterator to the end
+    while (!it.isEnd()) {
+        ++it;
+    }
+    return it;
 }
 
