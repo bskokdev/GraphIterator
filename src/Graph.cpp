@@ -24,13 +24,13 @@ const std::unordered_map<int, std::vector<int>> &Graph::getAdjacencyList() const
     return this->adjacencyList;
 }
 
-GraphIteratorBFS Graph::begin() {
+GraphIteratorBFS Graph::beginBFS() {
     GraphIteratorBFS it(*this);
     it.reset();
     return it;
 }
 
-GraphIteratorBFS Graph::end() {
+GraphIteratorBFS Graph::endBFS() {
     GraphIteratorBFS it(*this);
     // move the iterator to the end
     while (!it.isEnd()) {

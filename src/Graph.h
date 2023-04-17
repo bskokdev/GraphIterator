@@ -40,13 +40,13 @@ public:
      * @brief returns an iterator to the beginning of the graph
      * @return graph iterator
      */
-    GraphIteratorBFS begin();
+    GraphIteratorBFS beginBFS();
 
     /**
      * @brief returns an iterator to the end of the graph
      * @return graph iterator
      */
-    GraphIteratorBFS end();
+    GraphIteratorBFS endBFS();
 
     // getters and setters
     const std::unordered_map<int, std::vector<int>> &getAdjacencyList() const;
