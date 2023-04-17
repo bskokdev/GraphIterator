@@ -19,3 +19,7 @@ std::pair<int, std::vector<int>> Graph::findLowestValue() {
     return lowestValue;
 }
 
+const std::unordered_map<int, std::vector<int>> &Graph::getAdjacencyList() const {
+    return this->adjacencyList;
+}
+

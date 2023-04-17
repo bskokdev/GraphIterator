@@ -27,7 +27,13 @@ public:
      */
     void addEdge(int source, int destination);
 
+    /**
+     * @brief finds the node with the lowest value
+     * @return the node with the lowest value
+     */
     std::pair<int, std::vector<int>> findLowestValue();
+
+    const std::unordered_map<int, std::vector<int>> &getAdjacencyList() const;
 };
 
 

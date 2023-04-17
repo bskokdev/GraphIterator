@@ -11,6 +11,12 @@ class GraphBaseIterator {
     virtual void reset() = 0;
 
     /**
+     * @brief checks if the iterator is at the end
+     * @return true if the iterator is at the end, false otherwise
+     */
+    virtual bool isEnd() = 0;
+
+    /**
      * @brief increments the iterator
      * @return the iterator
      */
