@@ -23,6 +23,12 @@ class GraphBaseIterator {
     virtual GraphBaseIterator& next() = 0;
 
     /**
+     * @brief gets the current key of the iterator
+     * @return value of the current key
+     */
+    virtual int currentKey() = 0;
+
+    /**
      * @brief increments the iterator
      * @return the iterator
      */
