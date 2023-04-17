@@ -17,6 +17,12 @@ class GraphBaseIterator {
     virtual bool isEnd() = 0;
 
     /**
+     * @brief increments the iterator (same as operator++)
+     * @return the iterator
+     */
+    virtual GraphBaseIterator& next() = 0;
+
+    /**
      * @brief increments the iterator
      * @return the iterator
      */
