@@ -2,7 +2,7 @@
 
 #include <utility>
 
-Application::Application(Reader reader): reader(std::move(reader)) {}
+Application::Application(Reader reader) : reader(std::move(reader)) {}
 
 void Application::run() {
     std::vector<std::string> lines = reader.readLines();

@@ -13,7 +13,7 @@ class Graph;
  */
 class GraphIteratorBFS : public GraphBaseIterator {
 private:
-    Graph& graph;
+    Graph &graph;
     std::set<int> visited;
     std::queue<std::pair<int, std::vector<int>>> queue;
 public:
@@ -21,7 +21,7 @@ public:
      * @brief constructor
      * @param graph Graph to iterate over
      */
-    explicit GraphIteratorBFS(Graph& graph);
+    explicit GraphIteratorBFS(Graph &graph);
 
     /**
      * @brief resets the iterator to the beginning
@@ -39,7 +39,7 @@ public:
      * @brief increments the iterator
      * @see GraphBaseIterator::next()
      */
-    GraphBaseIterator& next() override;
+    GraphBaseIterator &next() override;
 
     /**
      * @brief gets the current key of the iterator
@@ -51,13 +51,13 @@ public:
      * @brief increments the iterator (prefix)
      * @see GraphBaseIterator::operator++()
      */
-    GraphIteratorBFS& operator++() override;
+    GraphIteratorBFS &operator++() override;
 
     /**
      * @brief increments the iterator (postfix)
      * @see GraphBaseIterator::operator++(int)
      */
-    GraphBaseIterator& operator++(int) override;
+    GraphBaseIterator &operator++(int) override;
 
     /**
      * @brief dereferences the iterator
@@ -69,7 +69,7 @@ public:
      * @brief checks if the iterator is not equal to another iterator
      * @see GraphBaseIterator::operator!=()
      */
-    bool operator!=(const GraphBaseIterator& other) override;
+    bool operator!=(const GraphBaseIterator &other) override;
 };
 
 

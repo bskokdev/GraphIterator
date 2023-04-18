@@ -11,6 +11,7 @@
 
 // Forward declaration
 class GraphIteratorBFS;
+
 class GraphIteratorDFS;
 
 /**
@@ -31,7 +32,7 @@ public:
      * @brief builds a graph from a vector of input lines
      * @param inputLines
      */
-    explicit Graph(const std::vector<std::string>& inputLines);
+    explicit Graph(const std::vector<std::string> &inputLines);
 
     /**
      * @brief connects two vertices with an edge

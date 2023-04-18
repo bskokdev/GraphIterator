@@ -1,6 +1,6 @@
 #include "GraphIteratorBFS.h"
 
-GraphIteratorBFS::GraphIteratorBFS(Graph& graph) : graph(graph) {
+GraphIteratorBFS::GraphIteratorBFS(Graph &graph) : graph(graph) {
     this->queue = std::queue<std::pair<int, std::vector<int>>>();
     this->visited = std::set<int>();
 }
@@ -8,7 +8,7 @@ GraphIteratorBFS::GraphIteratorBFS(Graph& graph) : graph(graph) {
 void GraphIteratorBFS::reset() {
     // clear the queue and visited set
     this->visited.clear();
-    while(!this->queue.empty()) {
+    while (!this->queue.empty()) {
         this->queue.pop();
     }
 
@@ -37,7 +37,7 @@ GraphIteratorBFS &GraphIteratorBFS::operator++() {
         std::pair<int, std::vector<int>> currentNode = this->queue.front();
         this->queue.pop();
 
-        for (int &neighbor : currentNode.second) {
+        for (int &neighbor: currentNode.second) {
             if (!this->visited.count(neighbor)) {
                 this->queue.emplace(*this->graph.getAdjacencyList().find(neighbor));
                 this->visited.insert(neighbor);
@@ -46,9 +46,9 @@ GraphIteratorBFS &GraphIteratorBFS::operator++() {
     }
 
     // check for unvisited nodes (for disconnected graphs)
-    if(this->queue.empty()) {
-        for(auto &node : this->graph.getAdjacencyList()) {
-            if(!this->visited.count(node.first)) {
+    if (this->queue.empty()) {
+        for (auto &node: this->graph.getAdjacencyList()) {
+            if (!this->visited.count(node.first)) {
                 this->queue.emplace(node);
                 this->visited.insert(node.first);
                 break;
@@ -59,7 +59,7 @@ GraphIteratorBFS &GraphIteratorBFS::operator++() {
     return *this;
 }
 
-GraphBaseIterator& GraphIteratorBFS::operator++(int i) {
+GraphBaseIterator &GraphIteratorBFS::operator++(int i) {
     // create a copy of the iterator
     auto tmpIt = *this;
     // increment the original iterator
@@ -74,7 +74,7 @@ int GraphIteratorBFS::operator*() {
 
 bool GraphIteratorBFS::operator!=(const GraphBaseIterator &other) {
     // cast to GraphIteratorBFS
-    auto* other_ptr = dynamic_cast<const GraphIteratorBFS*>(&other);
-    if(other_ptr == nullptr) return true;
+    auto *other_ptr = dynamic_cast<const GraphIteratorBFS *>(&other);
+    if (other_ptr == nullptr) return true;
     return this->queue != other_ptr->queue;
 }

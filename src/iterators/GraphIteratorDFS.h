@@ -14,7 +14,7 @@ class Graph;
  */
 class GraphIteratorDFS : public GraphBaseIterator {
 private:
-    Graph& graph;
+    Graph &graph;
     std::set<int> visited;
     std::stack<std::pair<int, std::vector<int>>> stack;
 public:
@@ -58,7 +58,7 @@ public:
      * @brief increments the iterator (postfix)
      * @see GraphBaseIterator::operator++(int)
      */
-    GraphBaseIterator& operator++(int i) override;
+    GraphBaseIterator &operator++(int i) override;
 
     /**
      * @brief dereferences the iterator

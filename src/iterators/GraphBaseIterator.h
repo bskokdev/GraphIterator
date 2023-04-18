@@ -22,7 +22,7 @@ class GraphBaseIterator {
      * @brief increments the iterator (same as operator++)
      * @return the iterator
      */
-    virtual GraphBaseIterator& next() = 0;
+    virtual GraphBaseIterator &next() = 0;
 
     /**
      * @brief gets the current key of the iterator
@@ -34,13 +34,13 @@ class GraphBaseIterator {
      * @brief increments the iterator (prefix)
      * @return the iterator
      */
-    virtual GraphBaseIterator& operator++() = 0;
+    virtual GraphBaseIterator &operator++() = 0;
 
     /**
      * @brief increments the iterator (postfix)
      * @return the iterator
      */
-    virtual GraphBaseIterator&  operator++(int i) = 0;
+    virtual GraphBaseIterator &operator++(int i) = 0;
 
     /**
      * @brief dereferences the iterator
@@ -53,7 +53,7 @@ class GraphBaseIterator {
      * @param other the other iterator
      * @return true if the iterators are not equal, false otherwise
      */
-    virtual bool operator!=(const GraphBaseIterator& other) = 0;
+    virtual bool operator!=(const GraphBaseIterator &other) = 0;
 };
 
 

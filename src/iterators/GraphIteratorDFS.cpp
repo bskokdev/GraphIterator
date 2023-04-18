@@ -8,7 +8,7 @@ GraphIteratorDFS::GraphIteratorDFS(Graph &graph) : graph(graph) {
 void GraphIteratorDFS::reset() {
     // clear the visited set and the stack
     this->visited.clear();
-    while(!this->stack.empty()) {
+    while (!this->stack.empty()) {
         this->stack.pop();
     }
 
@@ -30,13 +30,13 @@ int GraphIteratorDFS::currentKey() {
     return this->stack.top().first;
 }
 
-GraphBaseIterator& GraphIteratorDFS::operator++() {
+GraphBaseIterator &GraphIteratorDFS::operator++() {
     // Do a single DFS step (over the connected component)
-    if(!this->stack.empty()) {
+    if (!this->stack.empty()) {
         std::pair<int, std::vector<int>> currentNode = this->stack.top();
         this->stack.pop();
 
-        for (int &neighbor : currentNode.second) {
+        for (int &neighbor: currentNode.second) {
             if (!this->visited.count(neighbor)) {
                 this->stack.emplace(*this->graph.getAdjacencyList().find(neighbor));
                 this->visited.insert(neighbor);
@@ -44,9 +44,9 @@ GraphBaseIterator& GraphIteratorDFS::operator++() {
         }
     }
     // Check for unvisited nodes (for disconnected graphs)
-    if(this->stack.empty()) {
-        for(auto &node : this->graph.getAdjacencyList()) {
-            if(!this->visited.count(node.first)) {
+    if (this->stack.empty()) {
+        for (auto &node: this->graph.getAdjacencyList()) {
+            if (!this->visited.count(node.first)) {
                 this->stack.emplace(node);
                 this->visited.insert(node.first);
                 break;
@@ -56,7 +56,7 @@ GraphBaseIterator& GraphIteratorDFS::operator++() {
     return *this;
 }
 
-GraphBaseIterator& GraphIteratorDFS::operator++(int i) {
+GraphBaseIterator &GraphIteratorDFS::operator++(int i) {
     auto tmpIt = *this;
     ++(*this);
     return tmpIt;
@@ -67,7 +67,7 @@ int GraphIteratorDFS::operator*() {
 }
 
 bool GraphIteratorDFS::operator!=(const GraphBaseIterator &other) {
-    auto* other_ptr = dynamic_cast<const GraphIteratorDFS*>(&other);
-    if(other_ptr == nullptr) return true;
+    auto *other_ptr = dynamic_cast<const GraphIteratorDFS *>(&other);
+    if (other_ptr == nullptr) return true;
     return this->stack != other_ptr->stack;
 }

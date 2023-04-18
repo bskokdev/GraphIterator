@@ -2,7 +2,7 @@
 #include "iterators/GraphIteratorBFS.h"
 #include "iterators/GraphIteratorDFS.h"
 
-Graph::Graph(const std::vector<std::string>& inputLines) {
+Graph::Graph(const std::vector<std::string> &inputLines) {
     // for each line in the input file create an edge
     for (auto &line: inputLines) {
         addEdgeFromInputLine(line);
