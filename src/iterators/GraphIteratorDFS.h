@@ -7,6 +7,8 @@
 #include "../Graph.h"
 #include "GraphBaseIterator.h"
 
+class Graph;
+
 /**
  * @brief class representing a depth first search iterator
  */
@@ -16,8 +18,6 @@ private:
     std::set<int> visited;
     std::stack<std::pair<int, std::vector<int>>> stack;
 public:
-private:
-
     /**
      * @brief constructor
      * @param graph Graph to iterate over

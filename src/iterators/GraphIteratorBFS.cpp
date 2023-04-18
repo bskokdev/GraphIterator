@@ -1,7 +1,6 @@
 #include "GraphIteratorBFS.h"
-#include "../Graph.h"
 
-GraphIteratorBFS::GraphIteratorBFS(Graph &graph) : graph(graph) {
+GraphIteratorBFS::GraphIteratorBFS(Graph& graph) : graph(graph) {
     this->queue = std::queue<std::pair<int, std::vector<int>>>();
     this->visited = std::set<int>();
 }
@@ -33,6 +32,7 @@ int GraphIteratorBFS::currentKey() {
 }
 
 GraphIteratorBFS &GraphIteratorBFS::operator++() {
+    // do a single BFS step
     if (!this->queue.empty()) {
         std::pair<int, std::vector<int>> currentNode = this->queue.front();
         this->queue.pop();
@@ -48,7 +48,7 @@ GraphIteratorBFS &GraphIteratorBFS::operator++() {
 
 }
 
-std::shared_ptr<GraphBaseIterator> GraphIteratorBFS::operator++(int) {
+std::shared_ptr<GraphBaseIterator> GraphIteratorBFS::operator++(int i) {
     // create a copy of the iterator
     auto tmpIt = std::make_shared<GraphIteratorBFS>(*this);
     // increment the original iterator
@@ -58,7 +58,7 @@ std::shared_ptr<GraphBaseIterator> GraphIteratorBFS::operator++(int) {
 }
 
 int GraphIteratorBFS::operator*() {
-    return this->queue.front().first;
+    return this->currentKey();
 }
 
 bool GraphIteratorBFS::operator!=(const GraphBaseIterator &other) {

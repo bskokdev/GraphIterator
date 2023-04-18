@@ -40,7 +40,7 @@ class GraphBaseIterator {
      * @brief increments the iterator (postfix)
      * @return the iterator
      */
-    virtual std::shared_ptr<GraphBaseIterator> operator++(int) = 0;
+    virtual std::shared_ptr<GraphBaseIterator> operator++(int i) = 0;
 
     /**
      * @brief dereferences the iterator

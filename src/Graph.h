@@ -8,7 +8,9 @@
 #include "iterators/GraphIteratorBFS.h"
 #include "iterators/GraphIteratorDFS.h"
 
-class GraphIteratorBFS;  // Forward declaration
+// Forward declaration
+class GraphIteratorBFS;
+class GraphIteratorDFS;
 
 /**
  * @brief class representing a graph

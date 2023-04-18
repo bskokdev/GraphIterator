@@ -21,7 +21,7 @@ public:
      * @brief constructor
      * @param graph Graph to iterate over
      */
-    explicit GraphIteratorBFS(Graph &graph);
+    explicit GraphIteratorBFS(Graph& graph);
 
     /**
      * @brief resets the iterator to the beginning

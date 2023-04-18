@@ -1,5 +1,6 @@
 #include "Graph.h"
 #include "iterators/GraphIteratorBFS.h"
+#include "iterators/GraphIteratorDFS.h"
 
 Graph::Graph() {
     adjacencyList = std::unordered_map<int, std::vector<int>>();
@@ -38,4 +39,20 @@ GraphIteratorBFS Graph::endBFS() {
     }
     return it;
 }
+
+GraphIteratorDFS Graph::beginDFS() {
+    GraphIteratorDFS it(*this);
+    it.reset();
+    return it;
+}
+
+GraphIteratorDFS Graph::endDFS() {
+    GraphIteratorDFS it(*this);
+    // move the iterator to the end
+    while (!it.isEnd()) {
+        ++it;
+    }
+    return it;
+}
+
 
