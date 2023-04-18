@@ -61,7 +61,7 @@ GraphIteratorBFS &GraphIteratorBFS::operator++() {
 
 GraphBaseIterator& GraphIteratorBFS::operator++(int i) {
     // create a copy of the iterator
-    auto tmpIt = GraphIteratorBFS(*this);
+    auto tmpIt = *this;
     // increment the original iterator
     ++(*this);
     // return the copy

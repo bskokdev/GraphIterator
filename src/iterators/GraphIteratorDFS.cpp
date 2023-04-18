@@ -57,7 +57,7 @@ GraphBaseIterator& GraphIteratorDFS::operator++() {
 }
 
 GraphBaseIterator& GraphIteratorDFS::operator++(int i) {
-    auto tmpIt = GraphIteratorDFS(*this);
+    auto tmpIt = *this;
     ++(*this);
     return tmpIt;
 }
