@@ -17,6 +17,13 @@ private:
     std::stack<std::pair<int, std::vector<int>>> stack;
 public:
 private:
+
+    /**
+     * @brief constructor
+     * @param graph Graph to iterate over
+     */
+    explicit GraphIteratorDFS(Graph &graph);
+
     /**
      * @brief resets the iterator to the beginning
      * @see GraphBaseIterator::reset()

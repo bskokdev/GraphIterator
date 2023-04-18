@@ -6,6 +6,7 @@
 #include <vector>
 #include <climits>
 #include "iterators/GraphIteratorBFS.h"
+#include "iterators/GraphIteratorDFS.h"
 
 class GraphIteratorBFS;  // Forward declaration
 
@@ -37,16 +38,28 @@ public:
     std::pair<int, std::vector<int>> findLowestValue();
 
     /**
-     * @brief returns an iterator to the beginning of the graph
-     * @return graph iterator
+     * @brief returns an iterator to the beginning of the graph (BFS)
+     * @return graph BFS iterator
      */
     GraphIteratorBFS beginBFS();
 
     /**
-     * @brief returns an iterator to the end of the graph
-     * @return graph iterator
+     * @brief returns an iterator to the end of the graph (BFS)
+     * @return graph BFS iterator
      */
     GraphIteratorBFS endBFS();
+
+    /**
+     * @brief returns an iterator to the beginning of the graph (DFS)
+     * @return graph DFS iterator
+     */
+    GraphIteratorDFS beginDFS();
+
+    /**
+     * @brief returns an iterator to the end of the graph (DFS)
+     * @return graph DFS iterator
+     */
+    GraphIteratorDFS endDFS();
 
     // getters and setters
     const std::unordered_map<int, std::vector<int>> &getAdjacencyList() const;
