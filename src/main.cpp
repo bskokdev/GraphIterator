@@ -1,8 +1,12 @@
 #include <iostream>
-#include "graph/Graph.h"
 #include "io/Reader.h"
 #include "Application/Application.h"
 
+/**
+ * @brief gets the file path from the arguments
+ * @param argv input file path
+ * @return input file path as string
+ */
 std::string getFilePathFromArgs(char **argv) {
     std::string filePath = argv[1];
     if (filePath.empty()) {
