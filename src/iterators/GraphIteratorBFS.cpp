@@ -59,9 +59,9 @@ GraphIteratorBFS &GraphIteratorBFS::operator++() {
     return *this;
 }
 
-std::shared_ptr<GraphBaseIterator> GraphIteratorBFS::operator++(int i) {
+GraphBaseIterator& GraphIteratorBFS::operator++(int i) {
     // create a copy of the iterator
-    auto tmpIt = std::make_shared<GraphIteratorBFS>(*this);
+    auto tmpIt = GraphIteratorBFS(*this);
     // increment the original iterator
     ++(*this);
     // return the copy

@@ -8,7 +8,7 @@ int main() {
     graph.addEdge(3,4);
     graph.addEdge(5,6);
     graph.addEdge(6,8);
-    for(auto it = graph.beginDFS(); it != graph.endDFS(); it++) {
+    for(auto it = graph.beginBFS(); it != graph.endBFS(); it++) {
         std::cout << it.currentKey() << std::endl;
     }
     return 0;

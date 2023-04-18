@@ -57,7 +57,7 @@ public:
      * @brief increments the iterator (postfix)
      * @see GraphBaseIterator::operator++(int)
      */
-    std::shared_ptr<GraphBaseIterator> operator++(int) override;
+    GraphBaseIterator& operator++(int) override;
 
     /**
      * @brief dereferences the iterator

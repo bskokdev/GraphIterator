@@ -30,7 +30,7 @@ int GraphIteratorDFS::currentKey() {
     return this->stack.top().first;
 }
 
-GraphBaseIterator &GraphIteratorDFS::operator++() {
+GraphBaseIterator& GraphIteratorDFS::operator++() {
     // Do a single DFS step (over the connected component)
     if(!this->stack.empty()) {
         std::pair<int, std::vector<int>> currentNode = this->stack.top();
@@ -56,8 +56,8 @@ GraphBaseIterator &GraphIteratorDFS::operator++() {
     return *this;
 }
 
-std::shared_ptr<GraphBaseIterator> GraphIteratorDFS::operator++(int i) {
-    auto tmpIt = std::make_shared<GraphIteratorDFS>(*this);
+GraphBaseIterator& GraphIteratorDFS::operator++(int i) {
+    auto tmpIt = GraphIteratorDFS(*this);
     ++(*this);
     return tmpIt;
 }
