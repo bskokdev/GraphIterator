@@ -18,7 +18,7 @@ list(FILTER SOURCES EXCLUDE REGEX "CMakeFiles")
 add_library(graph_lib STATIC ${SOURCES})
 
 # Adding executable of the project
-add_executable(GraphMastery src/main.cpp)
+add_executable(GraphIterators src/main.cpp)
 
 # Linking the library to the executable
-target_link_libraries(GraphMastery graph_lib)
+target_link_libraries(GraphIterators graph_lib)
