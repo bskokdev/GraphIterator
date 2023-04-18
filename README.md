@@ -14,5 +14,5 @@ The graph is represented as an adjacency list using an unordered map.
 3. Change directory to the build directory: `cd build`
 4. Run CMake: `cmake ..` or `cmake -G "MinGW Makefiles" ..` to build Makefiles 
 5. Run make: `make` to build the project
-6. Run the executable: `./GraphIterators input.txt` (still in the build directory)
+6. Run the executable: `./GraphIterators ../input.txt` (notice ../input.txt)
 
