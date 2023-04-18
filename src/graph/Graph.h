@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <vector>
 #include <climits>
+#include "io/Reader.h"
 #include "iterators/GraphIteratorBFS.h"
 #include "iterators/GraphIteratorDFS.h"
 
@@ -24,7 +25,13 @@ public:
     /**
      * @brief default constructor for graph
      */
-    Graph();
+    Graph() = default;
+
+    /**
+     * @brief builds a graph from a vector of input lines
+     * @param inputLines
+     */
+    explicit Graph(const std::vector<std::string>& inputLines);
 
     /**
      * @brief connects two vertices with an edge
@@ -32,6 +39,12 @@ public:
      * @param destination destination node
      */
     void addEdge(int source, int destination);
+
+    /**
+     * @brief adds an edge from an input line string
+     * @param inputLine input line string
+     */
+    void addEdgeFromInputLine(std::string inputLine);
 
     /**
      * @brief finds the node with the lowest value

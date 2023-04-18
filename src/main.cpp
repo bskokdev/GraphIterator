@@ -1,15 +1,21 @@
 #include <iostream>
-#include "Graph.h"
+#include "graph/Graph.h"
+#include "io/Reader.h"
+#include "Application/Application.h"
 
-int main() {
-    Graph graph;
-
-    graph.addEdge(1, 2);
-    graph.addEdge(3,4);
-    graph.addEdge(5,6);
-    graph.addEdge(6,8);
-    for(auto it = graph.beginBFS(); it != graph.endBFS(); it++) {
-        std::cout << it.currentKey() << std::endl;
+std::string getFilePathFromArgs(char **argv) {
+    std::string filePath = argv[1];
+    if(filePath.empty()) {
+        std::cout << "Please provide a file path as an argument" << std::endl;
+        exit(1);
     }
+    return filePath;
+}
+
+int main(int argc, char* argv[]) {
+    Reader reader(getFilePathFromArgs(argv));
+    Application app(reader);
+
+    app.run();
     return 0;
 }
