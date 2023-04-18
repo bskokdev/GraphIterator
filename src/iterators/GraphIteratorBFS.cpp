@@ -32,7 +32,7 @@ int GraphIteratorBFS::currentKey() {
 }
 
 GraphIteratorBFS &GraphIteratorBFS::operator++() {
-    // do a single BFS step
+    // do a single BFS step over the connected component
     if (!this->queue.empty()) {
         std::pair<int, std::vector<int>> currentNode = this->queue.front();
         this->queue.pop();
@@ -44,8 +44,19 @@ GraphIteratorBFS &GraphIteratorBFS::operator++() {
             }
         }
     }
-    return *this;
 
+    // check for unvisited nodes (for disconnected graphs)
+    if(this->queue.empty()) {
+        for(auto &node : this->graph.getAdjacencyList()) {
+            if(!this->visited.count(node.first)) {
+                this->queue.emplace(node);
+                this->visited.insert(node.first);
+                break;
+            }
+        }
+    }
+
+    return *this;
 }
 
 std::shared_ptr<GraphBaseIterator> GraphIteratorBFS::operator++(int i) {
