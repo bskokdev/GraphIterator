@@ -5,9 +5,9 @@
 #include <unordered_map>
 #include <vector>
 #include <climits>
-#include "io/Reader.h"
-#include "iterators/GraphIteratorBFS.h"
-#include "iterators/GraphIteratorDFS.h"
+#include "Reader.h"
+#include "GraphIteratorBFS.h"
+#include "GraphIteratorDFS.h"
 
 // Forward declaration
 class GraphIteratorBFS;

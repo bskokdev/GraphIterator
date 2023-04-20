@@ -3,7 +3,7 @@
 
 #include <set>
 #include <queue>
-#include "graph/Graph.h"
+#include "Graph.h"
 #include "GraphBaseIterator.h"
 
 class Graph;

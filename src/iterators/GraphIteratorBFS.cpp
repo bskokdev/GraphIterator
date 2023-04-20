@@ -1,4 +1,4 @@
-#include "GraphIteratorBFS.h"
+#include "../../include/GraphIteratorBFS.h"
 
 GraphIteratorBFS::GraphIteratorBFS(Graph &graph) : graph(graph) {
     this->queue = std::queue<std::pair<int, std::vector<int>>>();

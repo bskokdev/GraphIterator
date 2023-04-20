@@ -1,4 +1,4 @@
-#include "Reader.h"
+#include "../../include/Reader.h"
 
 Reader::Reader(std::string filePath) {
     this->filePath = std::move(filePath);

@@ -1,4 +1,4 @@
-#include "GraphIteratorDFS.h"
+#include "../../include/GraphIteratorDFS.h"
 
 GraphIteratorDFS::GraphIteratorDFS(Graph &graph) : graph(graph) {
     this->visited = std::set<int>();

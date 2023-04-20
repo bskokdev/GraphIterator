@@ -15,7 +15,7 @@ list(REMOVE_ITEM SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
 list(FILTER SOURCES EXCLUDE REGEX "CMakeFiles")
 
 # Creating a library from the source files
-add_library(graph_lib STATIC ${SOURCES} src/Application/Application.cpp src/Application/Application.h)
+add_library(graph_lib STATIC ${SOURCES} src/Application/Application.cpp)
 
 # Adding executable of the project
 add_executable(GraphIterators src/main.cpp)

@@ -1,6 +1,6 @@
 #include <iostream>
-#include "io/Reader.h"
-#include "Application/Application.h"
+#include "../include/Reader.h"
+#include "../include/Application.h"
 
 /**
  * @brief gets the file path from the arguments

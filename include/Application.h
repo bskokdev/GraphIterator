@@ -2,8 +2,8 @@
 #define TRANSACTIONDISCOUNTS_APPLICATION_H
 
 
-#include "io/Reader.h"
-#include "graph/Graph.h"
+#include "Reader.h"
+#include "Graph.h"
 
 /**
  * @brief Class for running the application

@@ -4,7 +4,7 @@
 
 #include <set>
 #include <stack>
-#include "graph/Graph.h"
+#include "Graph.h"
 #include "GraphBaseIterator.h"
 
 class Graph;
