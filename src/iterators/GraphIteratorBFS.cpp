@@ -37,6 +37,7 @@ GraphIteratorBFS &GraphIteratorBFS::operator++() {
         std::pair<int, std::vector<int>> currentNode = this->queue.front();
         this->queue.pop();
 
+        // add all unvisited neighbors to the queue
         for (int &neighbor: currentNode.second) {
             if (!this->visited.count(neighbor)) {
                 this->queue.emplace(*this->graph.getAdjacencyList().find(neighbor));
@@ -45,7 +46,7 @@ GraphIteratorBFS &GraphIteratorBFS::operator++() {
         }
     }
 
-    // check for unvisited nodes (for disconnected graphs)
+    // if the queue is empty, add the first unvisited node to the queue (disconnected component found)
     if (this->queue.empty()) {
         for (auto &node: this->graph.getAdjacencyList()) {
             if (!this->visited.count(node.first)) {
