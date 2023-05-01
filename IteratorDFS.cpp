@@ -33,6 +33,7 @@ IteratorDFS &IteratorDFS::next() {
             }
         }
     }
+
     // Check for unvisited nodes (for disconnected graphs)
     if (this->stack.empty()) {
         for (auto &node: this->graph.getConnectedNodes()) {
