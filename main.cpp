@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
     cout << endl;
 
     IteratorBFS bfsIt(graph);
-    cout << "DFS: ";
+    cout << "BFS: ";
     for (bfsIt.reset(); !bfsIt.isEnd(); bfsIt.next()) {
         cout << bfsIt.currentKey() << " ";
     }
