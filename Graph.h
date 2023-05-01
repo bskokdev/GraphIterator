@@ -9,10 +9,6 @@
 
 using namespace std;
 
-class IteratorBFS;
-
-class IteratorDFS;
-
 class Graph {
 private:
     unordered_map<int, vector<int>> adjacencyList;

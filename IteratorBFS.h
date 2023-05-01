@@ -7,8 +7,6 @@
 
 using namespace std;
 
-class Graph;
-
 class IteratorBFS {
 private:
     Graph &graph;

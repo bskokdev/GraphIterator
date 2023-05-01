@@ -6,8 +6,6 @@
 #include <stack>
 #include "Graph.h"
 
-class Graph;
-
 using namespace std;
 
 class IteratorDFS {
