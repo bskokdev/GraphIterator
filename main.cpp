@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// Usage: ./main.exe <filePath>
 int main(int argc, char *argv[]) {
     string filePath = argv[1];
     if (argc != 2) {
