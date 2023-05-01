@@ -8,7 +8,7 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
     string filePath = argv[1];
-    if (filePath.empty() || argc != 2) {
+    if (argc != 2) {
         cout << "Naval file" << endl;
         return 1;
     }
