@@ -12,9 +12,9 @@ void IteratorDFS::reset() {
         this->stack.pop();
     }
 
-    pair<int, vector<int>> lowestValueNode = graph.findNodeWithLowestVal();
-    this->stack.push(lowestValueNode);
-    this->visited.insert(lowestValueNode.first);
+    pair<int, vector<int>> lowestValue = graph.findLowestValue();
+    this->stack.push(lowestValue);
+    this->visited.insert(lowestValue.first);
 }
 
 bool IteratorDFS::isEnd() {
@@ -28,7 +28,7 @@ IteratorDFS &IteratorDFS::next() {
 
         for (int &neighbor: currentNode.second) {
             if (!this->visited.count(neighbor)) {
-                this->stack.emplace(*this->graph.getConnectedNodes().find(neighbor));
+                this->stack.emplace(*this->graph.getAdjacencyList().find(neighbor));
                 this->visited.insert(neighbor);
             }
         }
@@ -36,7 +36,7 @@ IteratorDFS &IteratorDFS::next() {
 
     // Check for unvisited nodes (for disconnected graphs)
     if (this->stack.empty()) {
-        for (auto &node: this->graph.getConnectedNodes()) {
+        for (auto &node: this->graph.getAdjacencyList()) {
             if (!this->visited.count(node.first)) {
                 this->stack.emplace(node);
                 this->visited.insert(node.first);
