@@ -54,10 +54,3 @@ IteratorBFS &IteratorBFS::next() {
 int IteratorBFS::currentKey() {
     return this->queue.front().first;
 }
-
-bool IteratorBFS::operator!=(const IteratorBFS &other) {
-    // cast to GraphIteratorBFS
-    auto *other_ptr = dynamic_cast<const IteratorBFS *>(&other);
-    if (other_ptr == nullptr) return true;
-    return this->queue != other_ptr->queue;
-}

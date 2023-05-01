@@ -49,9 +49,3 @@ IteratorDFS &IteratorDFS::next() {
 int IteratorDFS::currentKey() {
     return this->stack.top().first;
 }
-
-bool IteratorDFS::operator!=(const IteratorDFS &other) {
-    auto *other_ptr = dynamic_cast<const IteratorDFS *>(&other);
-    if (other_ptr == nullptr) return true;
-    return this->stack != other_ptr->stack;
-}
