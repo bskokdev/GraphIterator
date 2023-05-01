@@ -1,6 +1,6 @@
-#include "../../include/Graph.h"
-#include "../../include/GraphIteratorBFS.h"
-#include "../../include/GraphIteratorDFS.h"
+#include "Graph.h"
+#include "IteratorBFS.h"
+#include "IteratorDFS.h"
 
 
 Graph::Graph() : adjacencyList() {

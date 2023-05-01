@@ -1,11 +1,11 @@
-#include "../../include/GraphIteratorBFS.h"
+#include "IteratorBFS.h"
 
-GraphIteratorBFS::GraphIteratorBFS(Graph &graph) : graph(graph) {
+IteratorBFS::IteratorBFS(Graph &graph) : graph(graph) {
     this->queue = std::queue<std::pair<int, std::vector<int>>>();
     this->visited = std::set<int>();
 }
 
-void GraphIteratorBFS::reset() {
+void IteratorBFS::reset() {
     // clear the queue and visited set
     this->visited.clear();
     while (!this->queue.empty()) {
@@ -18,11 +18,11 @@ void GraphIteratorBFS::reset() {
     this->visited.insert(lowestValueNode.first);
 }
 
-bool GraphIteratorBFS::isEnd() {
+bool IteratorBFS::isEnd() {
     return this->queue.empty();
 }
 
-GraphIteratorBFS &GraphIteratorBFS::next() {
+IteratorBFS &IteratorBFS::next() {
     // do a single BFS step over the connected component
     if (!this->queue.empty()) {
         std::pair<int, std::vector<int>> currentNode = this->queue.front();
@@ -51,13 +51,13 @@ GraphIteratorBFS &GraphIteratorBFS::next() {
     return *this;
 }
 
-int GraphIteratorBFS::currentKey() {
+int IteratorBFS::currentKey() {
     return this->queue.front().first;
 }
 
-bool GraphIteratorBFS::operator!=(const GraphIteratorBFS &other) {
+bool IteratorBFS::operator!=(const IteratorBFS &other) {
     // cast to GraphIteratorBFS
-    auto *other_ptr = dynamic_cast<const GraphIteratorBFS *>(&other);
+    auto *other_ptr = dynamic_cast<const IteratorBFS *>(&other);
     if (other_ptr == nullptr) return true;
     return this->queue != other_ptr->queue;
 }

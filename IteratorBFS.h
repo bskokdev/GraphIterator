@@ -9,23 +9,23 @@ using namespace std;
 
 class Graph;
 
-class GraphIteratorBFS {
+class IteratorBFS {
 private:
     Graph &graph;
     set<int> visited;
     queue<pair<int, vector<int>>> queue;
 public:
-    explicit GraphIteratorBFS(Graph &graph);
+    explicit IteratorBFS(Graph &graph);
 
     void reset();
 
     bool isEnd();
 
-    GraphIteratorBFS &next();
+    IteratorBFS &next();
 
     int currentKey();
 
-    bool operator!=(const GraphIteratorBFS &other);
+    bool operator!=(const IteratorBFS &other);
 };
 
 

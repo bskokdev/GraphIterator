@@ -9,9 +9,9 @@
 
 using namespace std;
 
-class GraphIteratorBFS;
+class IteratorBFS;
 
-class GraphIteratorDFS;
+class IteratorDFS;
 
 class Graph {
 private:

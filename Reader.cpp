@@ -1,6 +1,6 @@
 #include <utility>
 
-#include "../../include/Reader.h"
+#include "Reader.h"
 
 Reader::Reader(std::string filePath) {
     this->filePath = std::move(filePath);

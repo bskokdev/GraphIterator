@@ -1,8 +1,8 @@
 #include <iostream>
-#include "../include/Reader.h"
-#include "../include/Graph.h"
-#include "../include/GraphIteratorDFS.h"
-#include "../include/GraphIteratorBFS.h"
+#include "Reader.h"
+#include "Graph.h"
+#include "IteratorDFS.h"
+#include "IteratorBFS.h"
 
 using namespace std;
 
@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     vector<string> lines = reader.readLines();
     Graph graph(lines);
 
-    GraphIteratorDFS dfsIt(graph);
+    IteratorDFS dfsIt(graph);
     cout << "DFS: ";
     for (dfsIt.reset(); !dfsIt.isEnd(); dfsIt.next()) {
         cout << dfsIt.currentKey() << " ";
@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
 
     cout << endl;
 
-    GraphIteratorBFS bfsIt(graph);
+    IteratorBFS bfsIt(graph);
     cout << "DFS: ";
     for (bfsIt.reset(); !bfsIt.isEnd(); bfsIt.next()) {
         cout << bfsIt.currentKey() << " ";

@@ -10,23 +10,23 @@ class Graph;
 
 using namespace std;
 
-class GraphIteratorDFS {
+class IteratorDFS {
 private:
     Graph &graph;
     set<int> visited;
     stack<pair<int, vector<int>>> stack;
 public:
-    explicit GraphIteratorDFS(Graph &graph);
+    explicit IteratorDFS(Graph &graph);
 
     void reset();
 
     bool isEnd();
 
-    GraphIteratorDFS &next();
+    IteratorDFS &next();
 
     int currentKey();
 
-    bool operator!=(const GraphIteratorDFS &other);
+    bool operator!=(const IteratorDFS &other);
 };
 
 

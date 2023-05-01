@@ -1,11 +1,11 @@
-#include "../../include/GraphIteratorDFS.h"
+#include "IteratorDFS.h"
 
-GraphIteratorDFS::GraphIteratorDFS(Graph &graph) : graph(graph) {
+IteratorDFS::IteratorDFS(Graph &graph) : graph(graph) {
     this->visited = set<int>();
     this->stack = ::stack < pair<int, vector<int>> > ();
 }
 
-void GraphIteratorDFS::reset() {
+void IteratorDFS::reset() {
     // clear the visited set and the stack
     this->visited.clear();
     while (!this->stack.empty()) {
@@ -17,11 +17,11 @@ void GraphIteratorDFS::reset() {
     this->visited.insert(lowestValue.first);
 }
 
-bool GraphIteratorDFS::isEnd() {
+bool IteratorDFS::isEnd() {
     return this->stack.empty();
 }
 
-GraphIteratorDFS &GraphIteratorDFS::next() {
+IteratorDFS &IteratorDFS::next() {
     if (!this->stack.empty()) {
         pair<int, vector<int>> currentNode = this->stack.top();
         this->stack.pop();
@@ -46,12 +46,12 @@ GraphIteratorDFS &GraphIteratorDFS::next() {
     return *this;
 }
 
-int GraphIteratorDFS::currentKey() {
+int IteratorDFS::currentKey() {
     return this->stack.top().first;
 }
 
-bool GraphIteratorDFS::operator!=(const GraphIteratorDFS &other) {
-    auto *other_ptr = dynamic_cast<const GraphIteratorDFS *>(&other);
+bool IteratorDFS::operator!=(const IteratorDFS &other) {
+    auto *other_ptr = dynamic_cast<const IteratorDFS *>(&other);
     if (other_ptr == nullptr) return true;
     return this->stack != other_ptr->stack;
 }

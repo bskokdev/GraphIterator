@@ -9,7 +9,7 @@ include_directories(src)
 
 # Adding source files from src directory, excluding main.cpp and tests
 file(GLOB_RECURSE SOURCES "src/*.cpp")
-list(REMOVE_ITEM SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
+list(REMOVE_ITEM SOURCES "main.cpp")
 
 # Removing CMakeFiles from the list of source files
 list(FILTER SOURCES EXCLUDE REGEX "CMakeFiles")
@@ -18,7 +18,7 @@ list(FILTER SOURCES EXCLUDE REGEX "CMakeFiles")
 add_library(graph_lib STATIC ${SOURCES})
 
 # Adding executable of the project
-add_executable(GraphIterators src/main.cpp)
+add_executable(GraphIterators main.cpp)
 
 # Linking the library to the executable
 target_link_libraries(GraphIterators graph_lib)
