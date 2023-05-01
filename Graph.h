@@ -1,5 +1,5 @@
-#ifndef GRAPHMASTERY_GRAPH_H
-#define GRAPHMASTERY_GRAPH_H
+#ifndef GRAPHITERATOR_GRAPH_H
+#define GRAPHITERATOR_GRAPH_H
 
 
 #include <unordered_map>
@@ -26,4 +26,4 @@ public:
 };
 
 
-#endif //GRAPHMASTERY_GRAPH_H
+#endif

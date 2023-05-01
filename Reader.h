@@ -1,5 +1,5 @@
-#ifndef TRANSACTIONDISCOUNTS_READER_H
-#define TRANSACTIONDISCOUNTS_READER_H
+#ifndef GRAPHITERATOR_READER_H
+#define GRAPHITERATOR_READER_H
 
 #include <string>
 #include <vector>
@@ -21,4 +21,4 @@ public:
     vector<string> readLines();
 };
 
-#endif //TRANSACTIONDISCOUNTS_READER_H
+#endif
