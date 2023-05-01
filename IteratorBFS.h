@@ -22,6 +22,8 @@ public:
     IteratorBFS &next();
 
     int currentKey();
+
+    bool operator!=(const IteratorBFS &other);
 };
 
 
