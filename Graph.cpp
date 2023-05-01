@@ -1,42 +1,41 @@
 #include "Graph.h"
 
-Graph::Graph() : adjacencyList() {
-    this->adjacencyList = unordered_map<int, vector<int>>();
+Graph::Graph() {
+    this->connectedNodes = map<int, vector<int>>();
 }
 
-Graph::Graph(vector<string> &inputLines) {
-    // for each line in the input file create an edge
-    for (string &line: inputLines) {
-        vector<string> tokens = tokenizeGraphInput(line, ' ');
+Graph::Graph(vector<string> &input) {
+    for (int i = 0; i < input.size(); ++i) {
+        vector<int> tokens = tokenizeGraphInput(input[i], ' ');
 
-        int source = stoi(tokens[0]);
-        int destination = stoi(tokens[1]);
+        int first = tokens[0];
+        int second = tokens[1];
 
-        adjacencyList[source].push_back(destination);
-        adjacencyList[destination].push_back(source);
+        connectedNodes[first].push_back(second);
+        connectedNodes[second].push_back(first);
     }
 }
 
-vector<string> Graph::tokenizeGraphInput(string &input, char divider) {
-    vector<string> tokens;
+vector<int> Graph::tokenizeGraphInput(string &input, char divider) {
+    vector<int> tokens(input.size());
     stringstream ss(input);
     string token;
     while (getline(ss, token, divider)) {
-        tokens.push_back(token);
+        tokens.push_back(stoi(token));
     }
     return tokens;
 }
 
-pair<int, vector<int>> Graph::findLowestValue() {
-    pair<int, vector<int>> lowestValue = make_pair(0, vector<int>());
-    for (auto &entry: adjacencyList) {
-        if (entry.first < lowestValue.first) {
-            lowestValue = entry;
+pair<int, vector<int>> Graph::findNodeWithLowestVal() {
+    pair<int, vector<int>> lowestValueNode = {0, vector<int>()};
+    for (auto &node: connectedNodes) {
+        if (node.first < lowestValueNode.first) {
+            lowestValueNode = node;
         }
     }
-    return lowestValue;
+    return lowestValueNode;
 }
 
-const unordered_map<int, vector<int>> &Graph::getAdjacencyList() const {
-    return this->adjacencyList;
+const map<int, vector<int>> &Graph::getConnectedNodes() const {
+    return this->connectedNodes;
 }

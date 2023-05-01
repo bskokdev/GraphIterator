@@ -5,24 +5,25 @@
 #include <unordered_map>
 #include <vector>
 #include <string>
+#include <map>
 #include "Reader.h"
 
 using namespace std;
 
 class Graph {
 private:
-    unordered_map<int, vector<int>> adjacencyList;
+    map<int, vector<int>> connectedNodes;
 
-    static vector<string> tokenizeGraphInput(string &input, char divider);
+    static vector<int> tokenizeGraphInput(string &input, char divider);
 
 public:
     Graph();
 
-    explicit Graph(vector<string> &inputLines);
+    explicit Graph(vector<string> &input);
 
-    pair<int, vector<int>> findLowestValue();
+    pair<int, vector<int>> findNodeWithLowestVal();
 
-    const unordered_map<int, vector<int>> &getAdjacencyList() const;
+    const map<int, vector<int>> &getConnectedNodes() const;
 };
 
 

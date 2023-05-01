@@ -6,16 +6,16 @@
 
 using namespace std;
 
-int main(int argc, char *argv[]) {
-    string filePath = argv[1];
-    if (filePath.empty() || argc != 2) {
+int main(int argc, char **argv) {
+    string file = argv[1];
+    if (argc != 2) {
         cout << "Naval file" << endl;
         return 1;
     }
-    Reader reader(filePath);
+    Reader reader(file);
 
-    vector<string> lines = reader.readLines();
-    Graph graph(lines);
+    vector<string> input = reader.readLines();
+    Graph graph(input);
 
     IteratorDFS dfsIt(graph);
     cout << "DFS: ";

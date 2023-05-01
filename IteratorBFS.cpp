@@ -13,7 +13,7 @@ void IteratorBFS::reset() {
     }
 
     // add the first node to the queue
-    pair<int, vector<int>> lowestValueNode = graph.findLowestValue();
+    pair<int, vector<int>> lowestValueNode = graph.findNodeWithLowestVal();
     this->queue.push(lowestValueNode);
     this->visited.insert(lowestValueNode.first);
 }
@@ -31,7 +31,7 @@ IteratorBFS &IteratorBFS::next() {
         // add all unvisited neighbors to the queue
         for (int &neighbor: currentNode.second) {
             if (!this->visited.count(neighbor)) {
-                this->queue.emplace(*this->graph.getAdjacencyList().find(neighbor));
+                this->queue.emplace(*this->graph.getConnectedNodes().find(neighbor));
                 this->visited.insert(neighbor);
             }
         }
@@ -39,7 +39,7 @@ IteratorBFS &IteratorBFS::next() {
 
     // if the queue is empty, add the first unvisited node to the queue (disconnected component found)
     if (this->queue.empty()) {
-        for (auto &node: this->graph.getAdjacencyList()) {
+        for (auto &node: this->graph.getConnectedNodes()) {
             if (!this->visited.count(node.first)) {
                 this->queue.emplace(node);
                 this->visited.insert(node.first);
