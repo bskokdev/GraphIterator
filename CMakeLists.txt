@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 17)
 include_directories(src)
 
 # Adding source files from src directory, excluding main.cpp and tests
-file(GLOB_RECURSE SOURCES "src/*.cpp")
+file(GLOB_RECURSE SOURCES "*.cpp")
 list(REMOVE_ITEM SOURCES "main.cpp")
 
 # Removing CMakeFiles from the list of source files
