@@ -1,8 +1,8 @@
 #include "IteratorBFS.h"
 
 IteratorBFS::IteratorBFS(Graph &graph) : graph(graph) {
-    this->queue = std::queue<std::pair<int, std::vector<int>>>();
-    this->visited = std::set<int>();
+    this->queue = ::queue<pair<int, vector<int>>>();
+    this->visited = set<int>();
 }
 
 void IteratorBFS::reset() {
@@ -13,7 +13,7 @@ void IteratorBFS::reset() {
     }
 
     // add the first node to the queue
-    std::pair<int, std::vector<int>> lowestValueNode = graph.findLowestValue();
+    pair<int, vector<int>> lowestValueNode = graph.findLowestValue();
     this->queue.push(lowestValueNode);
     this->visited.insert(lowestValueNode.first);
 }
@@ -25,7 +25,7 @@ bool IteratorBFS::isEnd() {
 IteratorBFS &IteratorBFS::next() {
     // do a single BFS step over the connected component
     if (!this->queue.empty()) {
-        std::pair<int, std::vector<int>> currentNode = this->queue.front();
+        pair<int, vector<int>> currentNode = this->queue.front();
         this->queue.pop();
 
         // add all unvisited neighbors to the queue
