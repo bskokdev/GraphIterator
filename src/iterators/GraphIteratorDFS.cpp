@@ -1,8 +1,8 @@
 #include "../../include/GraphIteratorDFS.h"
 
 GraphIteratorDFS::GraphIteratorDFS(Graph &graph) : graph(graph) {
-    this->visited = std::set<int>();
-    this->stack = std::stack<std::pair<int, std::vector<int>>>();
+    this->visited = set<int>();
+    this->stack = ::stack < pair<int, vector<int>> > ();
 }
 
 void GraphIteratorDFS::reset() {
@@ -12,7 +12,7 @@ void GraphIteratorDFS::reset() {
         this->stack.pop();
     }
 
-    std::pair<int, std::vector<int>> lowestValue = graph.findLowestValue();
+    pair<int, vector<int>> lowestValue = graph.findLowestValue();
     this->stack.push(lowestValue);
     this->visited.insert(lowestValue.first);
 }
@@ -21,19 +21,9 @@ bool GraphIteratorDFS::isEnd() {
     return this->stack.empty();
 }
 
-GraphBaseIterator &GraphIteratorDFS::next() {
-    ++(*this);
-    return *this;
-}
-
-int GraphIteratorDFS::currentKey() {
-    return this->stack.top().first;
-}
-
-GraphBaseIterator &GraphIteratorDFS::operator++() {
-    // Do a single DFS step (over the connected component)
+GraphIteratorDFS &GraphIteratorDFS::next() {
     if (!this->stack.empty()) {
-        std::pair<int, std::vector<int>> currentNode = this->stack.top();
+        pair<int, vector<int>> currentNode = this->stack.top();
         this->stack.pop();
 
         for (int &neighbor: currentNode.second) {
@@ -56,17 +46,11 @@ GraphBaseIterator &GraphIteratorDFS::operator++() {
     return *this;
 }
 
-GraphBaseIterator &GraphIteratorDFS::operator++(int i) {
-    auto tmpIt = *this;
-    ++(*this);
-    return tmpIt;
+int GraphIteratorDFS::currentKey() {
+    return this->stack.top().first;
 }
 
-int GraphIteratorDFS::operator*() {
-    return this->currentKey();
-}
-
-bool GraphIteratorDFS::operator!=(const GraphBaseIterator &other) {
+bool GraphIteratorDFS::operator!=(const GraphIteratorDFS &other) {
     auto *other_ptr = dynamic_cast<const GraphIteratorDFS *>(&other);
     if (other_ptr == nullptr) return true;
     return this->stack != other_ptr->stack;

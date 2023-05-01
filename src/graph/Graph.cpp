@@ -2,28 +2,36 @@
 #include "../../include/GraphIteratorBFS.h"
 #include "../../include/GraphIteratorDFS.h"
 
-Graph::Graph(const std::vector<std::string> &inputLines) {
+
+Graph::Graph() : adjacencyList() {
+    this->adjacencyList = unordered_map<int, vector<int>>();
+}
+
+Graph::Graph(vector<string> &inputLines) {
     // for each line in the input file create an edge
-    for (auto &line: inputLines) {
-        addEdgeFromInputLine(line);
+    for (string &line: inputLines) {
+        vector<string> tokens = tokenizeGraphInput(line, ' ');
+
+        int source = stoi(tokens[0]);
+        int destination = stoi(tokens[1]);
+
+        adjacencyList[source].push_back(destination);
+        adjacencyList[destination].push_back(source);
     }
 }
 
-void Graph::addEdgeFromInputLine(std::string inputLine) {
-    std::vector<std::string> tokens = Reader::tokenize(inputLine, ' ');
-
-    int source = std::stoi(tokens[0]);
-    int destination = std::stoi(tokens[1]);
-    addEdge(source, destination);
+vector<string> Graph::tokenizeGraphInput(string &input, char divider) {
+    vector<string> tokens;
+    stringstream ss(input);
+    string token;
+    while (getline(ss, token, divider)) {
+        tokens.push_back(token);
+    }
+    return tokens;
 }
 
-void Graph::addEdge(int source, int destination) {
-    adjacencyList[source].push_back(destination);
-    adjacencyList[destination].push_back(source);
-}
-
-std::pair<int, std::vector<int>> Graph::findLowestValue() {
-    std::pair<int, std::vector<int>> lowestValue = std::make_pair(INT_MAX, std::vector<int>());
+pair<int, vector<int>> Graph::findLowestValue() {
+    pair<int, vector<int>> lowestValue = make_pair(0, vector<int>());
     for (auto &entry: adjacencyList) {
         if (entry.first < lowestValue.first) {
             lowestValue = entry;
@@ -32,38 +40,6 @@ std::pair<int, std::vector<int>> Graph::findLowestValue() {
     return lowestValue;
 }
 
-const std::unordered_map<int, std::vector<int>> &Graph::getAdjacencyList() const {
+const unordered_map<int, vector<int>> &Graph::getAdjacencyList() const {
     return this->adjacencyList;
 }
-
-GraphIteratorBFS Graph::beginBFS() {
-    GraphIteratorBFS it(*this);
-    it.reset();
-    return it;
-}
-
-GraphIteratorBFS Graph::endBFS() {
-    GraphIteratorBFS it(*this);
-    // move the iterator to the end
-    while (!it.isEnd()) {
-        ++it;
-    }
-    return it;
-}
-
-GraphIteratorDFS Graph::beginDFS() {
-    GraphIteratorDFS it(*this);
-    it.reset();
-    return it;
-}
-
-GraphIteratorDFS Graph::endDFS() {
-    GraphIteratorDFS it(*this);
-    // move the iterator to the end
-    while (!it.isEnd()) {
-        ++it;
-    }
-    return it;
-}
-
-

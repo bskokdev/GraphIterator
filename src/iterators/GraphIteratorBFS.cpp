@@ -22,16 +22,7 @@ bool GraphIteratorBFS::isEnd() {
     return this->queue.empty();
 }
 
-GraphBaseIterator &GraphIteratorBFS::next() {
-    ++(*this);
-    return *this;
-}
-
-int GraphIteratorBFS::currentKey() {
-    return this->queue.front().first;
-}
-
-GraphIteratorBFS &GraphIteratorBFS::operator++() {
+GraphIteratorBFS &GraphIteratorBFS::next() {
     // do a single BFS step over the connected component
     if (!this->queue.empty()) {
         std::pair<int, std::vector<int>> currentNode = this->queue.front();
@@ -60,20 +51,11 @@ GraphIteratorBFS &GraphIteratorBFS::operator++() {
     return *this;
 }
 
-GraphBaseIterator &GraphIteratorBFS::operator++(int i) {
-    // create a copy of the iterator
-    auto tmpIt = *this;
-    // increment the original iterator
-    ++(*this);
-    // return the copy
-    return tmpIt;
+int GraphIteratorBFS::currentKey() {
+    return this->queue.front().first;
 }
 
-int GraphIteratorBFS::operator*() {
-    return this->currentKey();
-}
-
-bool GraphIteratorBFS::operator!=(const GraphBaseIterator &other) {
+bool GraphIteratorBFS::operator!=(const GraphIteratorBFS &other) {
     // cast to GraphIteratorBFS
     auto *other_ptr = dynamic_cast<const GraphIteratorBFS *>(&other);
     if (other_ptr == nullptr) return true;

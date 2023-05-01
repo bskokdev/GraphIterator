@@ -1,25 +1,34 @@
 #include <iostream>
 #include "../include/Reader.h"
-#include "../include/Application.h"
+#include "../include/Graph.h"
+#include "../include/GraphIteratorDFS.h"
+#include "../include/GraphIteratorBFS.h"
 
-/**
- * @brief gets the file path from the arguments
- * @param argv input file path
- * @return input file path as string
- */
-std::string getFilePathFromArgs(char **argv) {
-    std::string filePath = argv[1];
-    if (filePath.empty()) {
-        std::cout << "Please provide a file path as an argument" << std::endl;
-        exit(1);
-    }
-    return filePath;
-}
+using namespace std;
 
 int main(int argc, char *argv[]) {
-    Reader reader(getFilePathFromArgs(argv));
-    Application app(reader);
+    string filePath = argv[1];
+    if (filePath.empty() || argc != 2) {
+        cout << "Naval file" << endl;
+        return 1;
+    }
+    Reader reader(filePath);
 
-    app.run();
+    vector<string> lines = reader.readLines();
+    Graph graph(lines);
+
+    GraphIteratorDFS dfsIt(graph);
+    cout << "DFS: ";
+    for (dfsIt.reset(); !dfsIt.isEnd(); dfsIt.next()) {
+        cout << dfsIt.currentKey() << " ";
+    }
+
+    cout << endl;
+
+    GraphIteratorBFS bfsIt(graph);
+    cout << "DFS: ";
+    for (bfsIt.reset(); !bfsIt.isEnd(); bfsIt.next()) {
+        cout << bfsIt.currentKey() << " ";
+    }
     return 0;
 }

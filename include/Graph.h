@@ -4,81 +4,29 @@
 
 #include <unordered_map>
 #include <vector>
-#include <climits>
+#include <string>
 #include "Reader.h"
-#include "GraphIteratorBFS.h"
-#include "GraphIteratorDFS.h"
 
-// Forward declaration
+using namespace std;
+
 class GraphIteratorBFS;
 
 class GraphIteratorDFS;
 
-/**
- * @brief class representing a graph
- * @details the graph is represented as an adjacency list
- */
 class Graph {
 private:
-    std::unordered_map<int, std::vector<int>> adjacencyList;
+    unordered_map<int, vector<int>> adjacencyList;
+
+    static vector<string> tokenizeGraphInput(string &input, char divider);
+
 public:
+    Graph();
 
-    /**
-     * @brief default constructor for graph
-     */
-    Graph() = default;
+    explicit Graph(vector<string> &inputLines);
 
-    /**
-     * @brief builds a graph from a vector of input lines
-     * @param inputLines
-     */
-    explicit Graph(const std::vector<std::string> &inputLines);
+    pair<int, vector<int>> findLowestValue();
 
-    /**
-     * @brief connects two vertices with an edge
-     * @param source source node
-     * @param destination destination node
-     */
-    void addEdge(int source, int destination);
-
-    /**
-     * @brief adds an edge from an input line string
-     * @param inputLine input line string
-     */
-    void addEdgeFromInputLine(std::string inputLine);
-
-    /**
-     * @brief finds the node with the lowest value
-     * @return the node with the lowest value
-     */
-    std::pair<int, std::vector<int>> findLowestValue();
-
-    /**
-     * @brief returns an iterator to the beginning of the graph (BFS)
-     * @return graph BFS iterator
-     */
-    GraphIteratorBFS beginBFS();
-
-    /**
-     * @brief returns an iterator to the end of the graph (BFS)
-     * @return graph BFS iterator
-     */
-    GraphIteratorBFS endBFS();
-
-    /**
-     * @brief returns an iterator to the beginning of the graph (DFS)
-     * @return graph DFS iterator
-     */
-    GraphIteratorDFS beginDFS();
-
-    /**
-     * @brief returns an iterator to the end of the graph (DFS)
-     * @return graph DFS iterator
-     */
-    GraphIteratorDFS endDFS();
-
-    // getters and setters
-    const std::unordered_map<int, std::vector<int>> &getAdjacencyList() const;
+    const unordered_map<int, vector<int>> &getAdjacencyList() const;
 };
 
 
