@@ -1,13 +1,11 @@
-#include <utility>
-
 #include "Reader.h"
 
 Reader::Reader(std::string filePath) {
     this->filePath = std::move(filePath);
 }
 
-vector <string> Reader::readLines() {
-    vector <std::string> lines;
+vector<string> Reader::readLines() {
+    vector<std::string> lines;
     ifstream file(filePath);
 
     // read file line by line and add to vector
