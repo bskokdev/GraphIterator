@@ -23,8 +23,6 @@ public:
     IteratorDFS &next();
 
     int currentKey();
-
-    bool operator!=(const IteratorDFS &other);
 };
 
 
