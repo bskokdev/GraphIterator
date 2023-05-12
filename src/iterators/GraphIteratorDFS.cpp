@@ -31,19 +31,19 @@ int GraphIteratorDFS::currentKey() {
 }
 
 GraphBaseIterator &GraphIteratorDFS::operator++() {
-    // Do a single DFS step (over the connected component)
     if (!this->stack.empty()) {
         std::pair<int, std::vector<int>> currentNode = this->stack.top();
         this->stack.pop();
 
-        for (int &neighbor: currentNode.second) {
+        for (auto it = currentNode.second.rbegin(); it != currentNode.second.rend(); ++it) {
+            int neighbor = *it;
             if (!this->visited.count(neighbor)) {
-                this->stack.emplace(*this->graph.getAdjacencyList().find(neighbor));
+                this->stack.emplace(neighbor, this->graph.getAdjacencyList().at(neighbor));
                 this->visited.insert(neighbor);
             }
         }
     }
-    // Check for unvisited nodes (for disconnected graphs)
+
     if (this->stack.empty()) {
         for (auto &node: this->graph.getAdjacencyList()) {
             if (!this->visited.count(node.first)) {
@@ -54,6 +54,7 @@ GraphBaseIterator &GraphIteratorDFS::operator++() {
         }
     }
     return *this;
+
 }
 
 GraphIteratorDFS GraphIteratorDFS::operator++(int i) {
