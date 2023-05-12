@@ -31,7 +31,7 @@ int GraphIteratorBFS::currentKey() {
     return this->queue.front().first;
 }
 
-GraphIteratorBFS &GraphIteratorBFS::operator++() {
+GraphBaseIterator &GraphIteratorBFS::operator++() {
     // do a single BFS step over the connected component
     if (!this->queue.empty()) {
         std::pair<int, std::vector<int>> currentNode = this->queue.front();
