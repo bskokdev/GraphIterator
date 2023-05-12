@@ -39,7 +39,7 @@ GraphIteratorBFS &GraphIteratorBFS::operator++() {
 
         for (int &neighbor: currentNode.second) {
             if (!this->visited.count(neighbor)) {
-                this->queue.emplace(*this->graph.getAdjacencyList().find(neighbor));
+                this->queue.emplace(neighbor, this->graph.getAdjacencyList().at(neighbor));
                 this->visited.insert(neighbor);
             }
         }
