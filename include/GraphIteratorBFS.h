@@ -57,7 +57,7 @@ public:
      * @brief increments the iterator (postfix)
      * @see GraphBaseIterator::operator++(int)
      */
-    GraphBaseIterator &operator++(int) override;
+    GraphIteratorBFS operator++(int);
 
     /**
      * @brief dereferences the iterator

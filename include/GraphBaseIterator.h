@@ -37,12 +37,6 @@ class GraphBaseIterator {
     virtual GraphBaseIterator &operator++() = 0;
 
     /**
-     * @brief increments the iterator (postfix)
-     * @return the iterator
-     */
-    virtual GraphBaseIterator &operator++(int i) = 0;
-
-    /**
      * @brief dereferences the iterator
      * @return the value of the iterator
      */

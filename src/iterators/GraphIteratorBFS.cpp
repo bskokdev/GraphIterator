@@ -59,9 +59,9 @@ GraphIteratorBFS &GraphIteratorBFS::operator++() {
     return *this;
 }
 
-GraphBaseIterator &GraphIteratorBFS::operator++(int i) {
+GraphIteratorBFS GraphIteratorBFS::operator++(int i) {
     // create a copy of the iterator
-    auto tmpIt = *this;
+    GraphIteratorBFS tmpIt = *this;
     // increment the original iterator
     ++(*this);
     // return the copy

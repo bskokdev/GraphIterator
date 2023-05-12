@@ -19,4 +19,5 @@ void Application::run() {
     for (auto it = graph.beginDFS(); it != graph.endDFS(); ++it) {
         std::cout << *it << " ";
     }
+    std::cout << '\n';
 }
