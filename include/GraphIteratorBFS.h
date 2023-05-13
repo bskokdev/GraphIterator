@@ -15,7 +15,7 @@ class GraphIteratorBFS : public GraphBaseIterator {
 private:
     Graph &graph;
     std::set<int> visited;
-    std::queue<std::pair<int, std::vector<int>>> queue;
+    std::queue<int> queue;
 public:
     /**
      * @brief constructor

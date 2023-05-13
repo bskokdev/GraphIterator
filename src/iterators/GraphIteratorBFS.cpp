@@ -1,7 +1,7 @@
 #include "../../include/GraphIteratorBFS.h"
 
 GraphIteratorBFS::GraphIteratorBFS(Graph &graph) : graph(graph) {
-    this->queue = std::queue<std::pair<int, std::vector<int>>>();
+    this->queue = std::queue<int>();
     this->visited = std::set<int>();
 }
 
@@ -14,7 +14,7 @@ void GraphIteratorBFS::reset() {
 
     // add the first node to the queue
     std::pair<int, std::vector<int>> lowestValueNode = graph.findLowestValue();
-    this->queue.push(lowestValueNode);
+    this->queue.push(lowestValueNode.first);
     this->visited.insert(lowestValueNode.first);
 }
 
@@ -28,18 +28,18 @@ GraphBaseIterator &GraphIteratorBFS::next() {
 }
 
 int GraphIteratorBFS::currentKey() {
-    return this->queue.front().first;
+    return this->queue.front();
 }
 
 GraphBaseIterator &GraphIteratorBFS::operator++() {
     // do a single BFS step over the connected component
     if (!this->queue.empty()) {
-        std::pair<int, std::vector<int>> currentNode = this->queue.front();
+        int currentNode = this->queue.front();
         this->queue.pop();
 
-        for (int &neighbor: currentNode.second) {
+        for (int neighbor : this->graph.getAdjacencyList().at(currentNode)) {
             if (!this->visited.count(neighbor)) {
-                this->queue.emplace(neighbor, this->graph.getAdjacencyList().at(neighbor));
+                this->queue.emplace(neighbor);
                 this->visited.insert(neighbor);
             }
         }
@@ -49,7 +49,7 @@ GraphBaseIterator &GraphIteratorBFS::operator++() {
     if (this->queue.empty()) {
         for (auto &node: this->graph.getAdjacencyList()) {
             if (!this->visited.count(node.first)) {
-                this->queue.emplace(node);
+                this->queue.emplace(node.first);
                 this->visited.insert(node.first);
                 break;
             }

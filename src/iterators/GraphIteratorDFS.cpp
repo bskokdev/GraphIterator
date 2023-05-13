@@ -2,7 +2,7 @@
 
 GraphIteratorDFS::GraphIteratorDFS(Graph &graph) : graph(graph) {
     this->visited = std::set<int>();
-    this->stack = std::stack<std::pair<int, std::vector<int>>>();
+    this->stack = std::stack<int>();
 }
 
 void GraphIteratorDFS::reset() {
@@ -13,7 +13,7 @@ void GraphIteratorDFS::reset() {
     }
 
     std::pair<int, std::vector<int>> lowestValue = graph.findLowestValue();
-    this->stack.push(lowestValue);
+    this->stack.push(lowestValue.first);
     this->visited.insert(lowestValue.first);
 }
 
@@ -27,18 +27,17 @@ GraphBaseIterator &GraphIteratorDFS::next() {
 }
 
 int GraphIteratorDFS::currentKey() {
-    return this->stack.top().first;
+    return this->stack.top();
 }
 
 GraphBaseIterator &GraphIteratorDFS::operator++() {
     if (!this->stack.empty()) {
-        std::pair<int, std::vector<int>> currentNode = this->stack.top();
+        int currentNode = this->stack.top();
         this->stack.pop();
 
-        for (auto it = currentNode.second.rbegin(); it != currentNode.second.rend(); ++it) {
-            int neighbor = *it;
+        for(int neighbor : this->graph.getAdjacencyList().at(currentNode)) {
             if (!this->visited.count(neighbor)) {
-                this->stack.emplace(neighbor, this->graph.getAdjacencyList().at(neighbor));
+                this->stack.emplace(neighbor);
                 this->visited.insert(neighbor);
             }
         }
@@ -47,7 +46,7 @@ GraphBaseIterator &GraphIteratorDFS::operator++() {
     if (this->stack.empty()) {
         for (auto &node: this->graph.getAdjacencyList()) {
             if (!this->visited.count(node.first)) {
-                this->stack.emplace(node);
+                this->stack.emplace(node.first);
                 this->visited.insert(node.first);
                 break;
             }

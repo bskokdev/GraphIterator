@@ -16,7 +16,7 @@ class GraphIteratorDFS : public GraphBaseIterator {
 private:
     Graph &graph;
     std::set<int> visited;
-    std::stack<std::pair<int, std::vector<int>>> stack;
+    std::stack<int> stack;
 public:
     /**
      * @brief constructor
